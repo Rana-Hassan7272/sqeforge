@@ -1,0 +1,21 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://sqeforge.co.uk/sitemap.xml
+
+# Block admin areas
+Disallow: /admin
+Disallow: /api/
+Disallow: /_next/
+Disallow: /dashboard/private
+
+# Allow important pages
+Allow: /
+Allow: /about
+Allow: /pricing
+Allow: /contact
+Allow: /blog
+Allow: /practice
+Allow: /auth/signin
+Allow: /auth/signup

@@ -12,6 +12,7 @@ import { ArrowLeft, ArrowRight, CheckCircle, XCircle, Brain, BookOpen, Scale, Ti
 import Link from "next/link"
 import { getQuestionsByModuleAndTopic } from "@/lib/questions-database"
 import { PackageService } from "@/lib/package-features"
+import { useLocalStorageString } from "@/hooks/use-local-storage"
 
 export default function MiniMockPage() {
   const params = useParams()
@@ -35,7 +36,7 @@ export default function MiniMockPage() {
   const progress = ((currentQuestionIndex + 1) / questions.length) * 100
 
   // Get user's current plan and available options
-  const userPlan = (typeof window !== 'undefined' ? localStorage.getItem('sqe-forge-mock-subscription') : 'free') || 'free'
+  const [userPlan, setUserPlan, isLoadingPlan] = useLocalStorageString('sqe-forge-mock-subscription', 'free')
   const availableOptions = PackageService.getMiniMockOptions(userPlan)
   
   const allMiniMockOptions = [

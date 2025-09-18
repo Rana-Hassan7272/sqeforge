@@ -8,6 +8,7 @@ import { Progress } from "@/components/ui/progress"
 import { ChevronLeft, ChevronRight, RotateCcw, Check, X, BookOpen, Brain } from "lucide-react"
 import { getFlashcardsByCategory, getAllCategories } from "@/lib/flashcards-database"
 import { PackageService } from "@/lib/package-features"
+import { useLocalStorageString } from "@/hooks/use-local-storage"
 
 export default function FlashcardsPage({ params }: { params: { category: string } }) {
   const [currentCard, setCurrentCard] = useState(0)
@@ -17,7 +18,7 @@ export default function FlashcardsPage({ params }: { params: { category: string 
   const [completedCards, setCompletedCards] = useState<Set<string>>(new Set())
 
   // Get user's current plan (for demo, using localStorage)
-  const userPlan = (typeof window !== 'undefined' ? localStorage.getItem('sqe-forge-mock-subscription') : 'free') || 'free'
+  const [userPlan, setUserPlan, isLoadingPlan] = useLocalStorageString('sqe-forge-mock-subscription', 'free')
   const flashcardLimit = PackageService.getFlashcardLimit(userPlan)
   
   const allCards = getFlashcardsByCategory(params.category)
@@ -58,6 +59,17 @@ export default function FlashcardsPage({ params }: { params: { category: string 
   }
 
   const progress = ((correctAnswers + incorrectAnswers) / cards.length) * 100
+
+  if (isLoadingPlan) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-secondary mx-auto mb-4"></div>
+          <p className="text-muted-foreground">Loading flashcards...</p>
+        </div>
+      </div>
+    )
+  }
 
   if (cards.length === 0) {
     return (
