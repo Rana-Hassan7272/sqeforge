@@ -1,6 +1,5 @@
 {
   "framework": "nextjs",
-  "regions": ["iad1", "lhr1"],
   "functions": {
     "app/api/**/*.ts": {
       "runtime": "@vercel/node"
