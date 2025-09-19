@@ -164,7 +164,7 @@ export default function PracticeMindMapPage() {
             <svg className="w-full h-full">
               {/* Connections */}
               {nodes.map((node) =>
-                node.connections.map((connectionId) => {
+                node.connections.map((connectionId: string) => {
                   const targetNode = nodes.find((n) => n.id === connectionId)
                   if (!targetNode) return null
 
