@@ -222,20 +222,20 @@ export default function CustomPracticePage() {
                           <Checkbox
                             id="bookmarked"
                             checked={includeBookmarked}
-                            onCheckedChange={setIncludeBookmarked}
+                            onCheckedChange={(checked) => setIncludeBookmarked(checked === true)}
                           />
                           <Label htmlFor="bookmarked" className="text-sm font-normal">
                             Include bookmarked questions
                           </Label>
                         </div>
                         <div className="flex items-center space-x-2">
-                          <Checkbox id="incorrect" checked={includeIncorrect} onCheckedChange={setIncludeIncorrect} />
+                          <Checkbox id="incorrect" checked={includeIncorrect} onCheckedChange={(checked) => setIncludeIncorrect(checked === true)} />
                           <Label htmlFor="incorrect" className="text-sm font-normal">
                             Include previously incorrect questions
                           </Label>
                         </div>
                         <div className="flex items-center space-x-2">
-                          <Checkbox id="random" checked={randomOrder} onCheckedChange={setRandomOrder} />
+                          <Checkbox id="random" checked={randomOrder} onCheckedChange={(checked) => setRandomOrder(checked === true)} />
                           <Label htmlFor="random" className="text-sm font-normal">
                             Randomize question order
                           </Label>

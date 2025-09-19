@@ -150,7 +150,7 @@ export default function SignUpPage() {
                 <Checkbox
                   id="terms"
                   checked={formData.agreeToTerms}
-                  onCheckedChange={(checked) => handleInputChange("agreeToTerms", checked as boolean)}
+                  onCheckedChange={(checked) => handleInputChange("agreeToTerms", checked === true)}
                   className="mt-0.5"
                 />
                 <div className="space-y-1">
