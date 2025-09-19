@@ -8,7 +8,18 @@ import { Progress } from "@/components/ui/progress"
 import { ChevronLeft, ChevronRight, RotateCcw, Check, X, BookOpen, Brain, ArrowLeft } from "lucide-react"
 import Link from "next/link"
 
-const constitutionalLawFlashcards = [
+interface ExtendedFlashcard {
+  id: number
+  front: string
+  back: string
+  category: string
+  difficulty: string
+  legalPrinciple: string
+  caseReferences: string[]
+  statuteReferences?: string[]
+}
+
+const constitutionalLawFlashcards: ExtendedFlashcard[] = [
   {
     id: 1,
     front: "What are the three core principles of the UK constitution according to Dicey?",

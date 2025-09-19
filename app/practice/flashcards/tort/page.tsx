@@ -8,7 +8,18 @@ import { Progress } from "@/components/ui/progress"
 import { ChevronLeft, ChevronRight, RotateCcw, Check, X, BookOpen, Brain, ArrowLeft } from "lucide-react"
 import Link from "next/link"
 
-const tortLawFlashcards = [
+interface ExtendedFlashcard {
+  id: number
+  front: string
+  back: string
+  category: string
+  difficulty: string
+  legalPrinciple: string
+  caseReferences: string[]
+  statuteReferences?: string[]
+}
+
+const tortLawFlashcards: ExtendedFlashcard[] = [
   {
     id: 1,
     front: "State the three-stage test for establishing a duty of care in negligence.",

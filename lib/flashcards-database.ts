@@ -5,6 +5,9 @@ export interface Flashcard {
   category: string
   difficulty: "foundation" | "intermediate" | "advanced"
   tags: string[]
+  caseReferences?: string[]
+  statuteReferences?: string[]
+  legalPrinciple?: string
 }
 
 export const flashcardsDatabase: Record<string, Flashcard[]> = {
