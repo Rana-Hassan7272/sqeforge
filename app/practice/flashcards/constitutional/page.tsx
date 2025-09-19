@@ -15,7 +15,7 @@ interface ExtendedFlashcard {
   category: string
   difficulty: string
   legalPrinciple: string
-  caseReferences: string[]
+  caseReferences?: string[]
   statuteReferences?: string[]
 }
 
@@ -197,14 +197,14 @@ export default function ConstitutionalLawFlashcards() {
                 <h4 className="font-semibold text-blue-900 mb-2">Legal Principle:</h4>
                 <p className="text-blue-800 mb-3">{cards[currentCard].legalPrinciple}</p>
 
-                {cards[currentCard].caseReferences && (
+                {cards[currentCard].caseReferences && cards[currentCard].caseReferences!.length > 0 && (
                   <div className="mb-2">
                     <span className="text-sm font-medium text-blue-900">Cases: </span>
                     <span className="text-sm text-blue-800">{cards[currentCard].caseReferences?.join(", ")}</span>
                   </div>
                 )}
 
-                {cards[currentCard].statuteReferences && (
+                {cards[currentCard].statuteReferences && cards[currentCard].statuteReferences!.length > 0 && (
                   <div>
                     <span className="text-sm font-medium text-blue-900">Statutes: </span>
                     <span className="text-sm text-blue-800">{cards[currentCard].statuteReferences?.join(", ")}</span>
