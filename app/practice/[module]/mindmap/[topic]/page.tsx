@@ -230,7 +230,7 @@ export default function PracticeMindMapPage() {
                     <div className="mb-4">
                       <h4 className="text-sm font-medium text-foreground mb-2">Key Cases:</h4>
                       <div className="space-y-1">
-                        {selectedNodeData.caselaw.map((case_name, index) => (
+                        {selectedNodeData.caselaw.map((case_name: string, index: number) => (
                           <Badge key={index} variant="outline" className="text-xs mr-1 mb-1">
                             {case_name}
                           </Badge>
@@ -243,7 +243,7 @@ export default function PracticeMindMapPage() {
                     <div className="mb-4">
                       <h4 className="text-sm font-medium text-foreground mb-2">Statutes:</h4>
                       <div className="space-y-1">
-                        {selectedNodeData.statutes.map((statute, index) => (
+                        {selectedNodeData.statutes.map((statute: string, index: number) => (
                           <Badge key={index} variant="secondary" className="text-xs mr-1 mb-1">
                             {statute}
                           </Badge>
