@@ -256,7 +256,7 @@ export default function PracticeMindMapPage() {
                     <div>
                       <h4 className="text-sm font-medium text-foreground mb-2">Connected to:</h4>
                       <div className="flex flex-wrap gap-1">
-                        {selectedNodeData.connections.map((connectionId) => {
+                        {selectedNodeData.connections.map((connectionId: string) => {
                           const connectedNode = nodes.find((n) => n.id === connectionId)
                           return connectedNode ? (
                             <Badge key={connectionId} variant="secondary" className="text-xs">
