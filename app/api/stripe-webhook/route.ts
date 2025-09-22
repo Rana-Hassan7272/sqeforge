@@ -2,7 +2,7 @@ import { type NextRequest, NextResponse } from "next/server"
 import Stripe from "stripe"
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: "2025-02-24.acacia",
+  apiVersion: "2025-08-27.basil",
 })
 
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET!
@@ -95,7 +95,7 @@ async function handlePaymentSucceeded(invoice: Stripe.Invoice) {
   // TODO: Update payment history in database
   // Send confirmation email to user
 
-  const subscriptionId = invoice.subscription as string
+  const subscriptionId = (invoice as any).subscription || ''
   const amountPaid = invoice.amount_paid / 100 // Convert from pence to pounds
 
   console.log(`[v0] Payment of £${amountPaid} succeeded for subscription ${subscriptionId}`)
@@ -109,7 +109,7 @@ async function handlePaymentFailed(invoice: Stripe.Invoice) {
   // 2. Send payment failure notification
   // 3. Potentially suspend access after grace period
 
-  const subscriptionId = invoice.subscription as string
+  const subscriptionId = (invoice as any).subscription || ''
   const attemptCount = invoice.attempt_count
 
   console.log(`[v0] Payment failed for subscription ${subscriptionId}, attempt ${attemptCount}`)

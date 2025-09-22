@@ -577,7 +577,7 @@ export const getRandomQuestions = (
     filtered = filtered.filter((q) => q.module === filters.module)
   }
   if (filters?.intensity) {
-    filtered = filtered.filter((q) => q.intensity <= filters.intensity)
+    filtered = filtered.filter((q) => q.intensity <= filters.intensity!)
   }
   if (filters?.topic) {
     filtered = filtered.filter((q) => q.topic === filters.topic)

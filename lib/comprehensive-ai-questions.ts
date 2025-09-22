@@ -135,7 +135,6 @@ Focus on current UK law, recent cases, and practical scenarios that test underst
     const { text } = await generateText({
       model: openai("gpt-4"),
       prompt: prompt,
-      maxTokens: 4000,
     })
 
     // Parse the AI response and return structured questions
@@ -201,7 +200,6 @@ Format as JSON array:
     const { text } = await generateText({
       model: openai("gpt-4"),
       prompt: prompt,
-      maxTokens: 3000,
     })
 
     return JSON.parse(text)
@@ -240,7 +238,6 @@ Format as JSON array of nodes:
     const { text } = await generateText({
       model: openai("gpt-4"),
       prompt: prompt,
-      maxTokens: 2000,
     })
 
     return JSON.parse(text)

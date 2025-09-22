@@ -1,13 +1,13 @@
 export interface PackageFeatures {
   plan: "free" | "basic" | "professional" | "premium"
   mocks: {
-    total: number
-    flk1: number
-    flk2: number
+    total: number | "unlimited"
+    flk1: number | "unlimited"
+    flk2: number | "unlimited"
   }
   mcqs: {
-    total: number
-    perModule: number
+    total: number | "unlimited"
+    perModule: number | "unlimited"
   }
   flashcards: {
     total: number | "unlimited"
@@ -33,9 +33,9 @@ export interface PackageFeatures {
     progressBasedAdjustments: boolean
   }
   limits: {
-    questionsPerSession: number
-    sessionsPerDay: number
-    mockExamsPerWeek: number
+    questionsPerSession: number | "unlimited"
+    sessionsPerDay: number | "unlimited"
+    mockExamsPerWeek: number | "unlimited"
   }
 }
 
@@ -166,13 +166,13 @@ export const PACKAGE_FEATURES: Record<string, PackageFeatures> = {
   premium: {
     plan: "premium",
     mocks: {
-      total: "unlimited" as any,
-      flk1: "unlimited" as any,
-      flk2: "unlimited" as any,
+      total: "unlimited",
+      flk1: "unlimited",
+      flk2: "unlimited",
     },
     mcqs: {
-      total: "unlimited" as any,
-      perModule: "unlimited" as any,
+      total: "unlimited",
+      perModule: "unlimited",
     },
     flashcards: {
       total: "unlimited",
@@ -198,9 +198,9 @@ export const PACKAGE_FEATURES: Record<string, PackageFeatures> = {
       progressBasedAdjustments: true,
     },
     limits: {
-      questionsPerSession: "unlimited" as any,
-      sessionsPerDay: "unlimited" as any,
-      mockExamsPerWeek: "unlimited" as any,
+      questionsPerSession: "unlimited",
+      sessionsPerDay: "unlimited",
+      mockExamsPerWeek: "unlimited",
     },
   },
 }

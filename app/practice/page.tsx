@@ -617,7 +617,7 @@ export default function PracticePage() {
                           <div className="flex flex-wrap gap-1">
                             {module.topics.slice(0, 3).map((topic, index) => (
                               <Badge key={index} variant="secondary" className="text-xs">
-                                {typeof topic === "string" ? topic : topic.name}
+                                {topic}
                               </Badge>
                             ))}
                             {module.topics.length > 3 && (

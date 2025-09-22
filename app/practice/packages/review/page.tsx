@@ -6,7 +6,34 @@ import { Badge } from "@/components/ui/badge"
 import { ArrowLeft, BookOpen, Clock, Users, Target, CheckCircle } from "lucide-react"
 import { useState } from "react"
 
-const mockContent = {
+interface MockExam {
+  title: string
+  questions: number
+  duration: string
+  topics: string[]
+  difficulty: string
+  sampleQuestions: string[]
+}
+
+interface PackageWithMocks {
+  name: string
+  mocks: number
+  price: number
+  flk1Mocks: MockExam[]
+  flk2Mocks: MockExam[]
+}
+
+interface PackageWithoutMocks {
+  name: string
+  mocks: number
+  price: number
+  description: string
+  additionalFeatures: string[]
+}
+
+type PackageData = PackageWithMocks | PackageWithoutMocks
+
+const mockContent: Record<string, PackageData> = {
   starter: {
     name: "Starter Package",
     mocks: 6,
@@ -461,7 +488,7 @@ export default function MockReviewPage() {
         </div>
 
         {/* FLK1 Mocks */}
-        {packageData.flk1Mocks && (
+        {'flk1Mocks' in packageData && packageData.flk1Mocks && (
           <div className="mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-8 flex items-center">
               <BookOpen className="w-8 h-8 text-blue-600 mr-3" />
@@ -540,7 +567,7 @@ export default function MockReviewPage() {
         )}
 
         {/* FLK2 Mocks */}
-        {packageData.flk2Mocks && (
+        {'flk2Mocks' in packageData && packageData.flk2Mocks && (
           <div className="mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-8 flex items-center">
               <Target className="w-8 h-8 text-green-600 mr-3" />
@@ -619,11 +646,11 @@ export default function MockReviewPage() {
         )}
 
         {/* Premium Package Additional Features */}
-        {packageId === "premium" && packageData.additionalFeatures && (
+        {packageId === "premium" && 'additionalFeatures' in packageData && packageData.additionalFeatures && (
           <div className="mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-8">Premium Package Features</h2>
             <div className="bg-white rounded-2xl shadow-lg p-8">
-              <p className="text-gray-600 mb-6">{packageData.description}</p>
+              <p className="text-gray-600 mb-6">{'description' in packageData ? packageData.description : ''}</p>
               <div className="grid md:grid-cols-2 gap-4">
                 {packageData.additionalFeatures.map((feature, index) => (
                   <div key={index} className="flex items-center space-x-2">

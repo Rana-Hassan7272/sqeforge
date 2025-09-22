@@ -57,7 +57,21 @@ export default function MindMapPage() {
   }
 
   const generateDisplayNodes = (rootNode: any) => {
-    const nodes: any[] = []
+    const nodes: Array<{
+      id: string
+      label: string
+      x: number
+      y: number
+      level: number
+      parent?: string
+      children: string[]
+      statutes: string[]
+      connections?: string[]
+      color?: string
+      title?: string
+      description?: string
+      caselaw?: string[]
+    }> = []
     const centerX = 400
     const centerY = 300
 
@@ -135,7 +149,7 @@ export default function MindMapPage() {
             <svg className="w-full h-full">
               {/* Connections */}
               {nodes.map((node) =>
-                node.connections.map((connectionId: string) => {
+                node.connections?.map((connectionId: string) => {
                   const targetNode = nodes.find((n) => n.id === connectionId)
                   if (!targetNode) return null
 
@@ -223,7 +237,7 @@ export default function MindMapPage() {
                     </div>
                   )}
 
-                  {selectedNodeData.connections.length > 0 && (
+                  {selectedNodeData.connections && selectedNodeData.connections.length > 0 && (
                     <div>
                       <h4 className="text-sm font-medium text-foreground mb-2">Connected to:</h4>
                       <div className="flex flex-wrap gap-1">
