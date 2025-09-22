@@ -1,8 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server"
 import Stripe from "stripe"
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!)
-
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url)
   const plan = searchParams.get("plan") || "professional"
@@ -16,6 +14,8 @@ export async function GET(request: NextRequest) {
   const selectedPlan = plans[plan as keyof typeof plans] || plans.professional
 
   try {
+    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!)
+
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       line_items: [

@@ -1,13 +1,13 @@
 import { type NextRequest, NextResponse } from "next/server"
 import Stripe from "stripe"
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!)
-
 export async function POST(request: NextRequest) {
   try {
     const { packageId, packageName, price, mocks } = await request.json()
 
     console.log("[v0] Creating Stripe checkout for mock package:", { packageId, packageName, price, mocks })
+
+    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!)
 
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
