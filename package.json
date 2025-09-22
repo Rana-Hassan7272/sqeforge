@@ -7,7 +7,6 @@
     "dev": "next dev",
     "lint": "next lint",
     "start": "next start",
-    "postbuild": "next-sitemap",
     "type-check": "tsc --noEmit",
     "vercel-build": "npm run build"
   },
