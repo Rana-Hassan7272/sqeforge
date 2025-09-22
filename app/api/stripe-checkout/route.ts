@@ -1,5 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server"
 import Stripe from "stripe"
+//hdh
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url)
